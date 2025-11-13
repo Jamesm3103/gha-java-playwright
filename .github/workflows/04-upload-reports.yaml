@@ -28,5 +28,5 @@ jobs:
       - name: Upload reports
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-reports
-          path: target/playwright-report
+          name: reports
+          path: target/surefire-reports

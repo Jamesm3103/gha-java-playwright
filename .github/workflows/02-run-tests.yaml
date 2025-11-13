@@ -13,7 +13,7 @@ jobs:
           node-version: lts/*
 
       - name: install dependencies
-        run: npm install
+        run: npm ci
 
       - name: run playwright tests
         run: npx playwright test

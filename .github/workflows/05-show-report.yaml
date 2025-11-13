@@ -34,5 +34,6 @@ jobs:
       - name: Show Playwright Report
         uses: phoenix-actions/test-reporting@v15
         with:
+          name: Playwright Test Report
           path: target/surefire-reports/"*.html"
           

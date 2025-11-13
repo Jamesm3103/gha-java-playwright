@@ -22,5 +22,5 @@ jobs:
         run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps"
 
       - name: run tests
-        run: mvn tests 
+        run: mvn test
       

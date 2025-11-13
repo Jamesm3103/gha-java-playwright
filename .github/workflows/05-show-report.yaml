@@ -36,5 +36,5 @@ jobs:
         with:
           name: Playwright Test Report
           reporter: java-junit
-          path: target/surefire-reports/TEST-*.html
+          path: target/surefire-reports/
           

@@ -9,9 +9,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4  
         with:
           distribution: 'temurin'
-          node-version: '21'
+          java-version: '21'
 
       - name: install and build tests
         run: mvn -B install -D skipTests --no-transfer-progress

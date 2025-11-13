@@ -1,4 +1,4 @@
-name: Cache Dependencies
+name: Upload reports
 on:
  push:
   branches:
@@ -30,4 +30,3 @@ jobs:
         with:
           name: playwright-reports
           path: target/playwright-report
-          

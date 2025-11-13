@@ -1,0 +1,38 @@
+name: Show the reports
+on:
+ push:
+  branches:
+    - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4  
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'maven'
+
+      - name: install and build tests
+        run: mvn -B install -D skipTests --no-transfer-progress
+
+      - name: install playwright browsers
+        run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps"
+
+      - name: run tests
+        run: mvn test
+      
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: target/surefire-reports
+
+      - name: Show Playwright Report
+        uses: phoenix-actions/test-reporting@v15
+        with:
+          report-path: target/surefire-reports/"*.html"
+          title: Playwright Test Report
